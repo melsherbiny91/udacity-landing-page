@@ -234,7 +234,7 @@ section.your-active-class .landing__container::after {
 	}
 }
 
-
+/* Top button style */
 #topBtn {
   display: none;
   position: fixed;

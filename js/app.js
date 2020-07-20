@@ -19,8 +19,9 @@
 */
 	const navList = document.querySelector('#menu__link');
 	const dynamicContent = Array.from(document.querySelectorAll('section'));
-	let dataNavArray = [];
 	const topBtn = document.getElementById("topBtn");
+	let dataNavArray = [];
+	
 	
 
 /**
@@ -46,43 +47,34 @@ handleLinkClick = (e) => {
 				dataNavArray.push(dataNav);
 		})
 
-		// loop for each section and add an list item for it
+		// loop on each section
 		dataNavArray.forEach((navItemName, index) => {
 			// create an anchor element
 			const menuLink = document.createElement('a');
 
-			// add section name to the anchor
 			menuLink.textContent = `${navItemName}`;
 
-			// add class .menu__link to the anchor
 			menuLink.className = 'menu__link';
 
-			// add attribute href pointing to section id
 			menuLink.setAttribute('id', `buttonsection${index + 1}`);
 			
 			menuLink.setAttribute('href', `#section${index + 1}`);
 
-			// add attribute name to each link
 			menuLink.setAttribute('name', `section${index + 1}`);
 
-			// add event listener to each link 
 			menuLink.addEventListener('click', function(e){
 				e.preventDefault();
 				scrollToFunction(e.target.name,e.target);
 			});
 
-			// add class .active to first link only
 			if (index === 0) {
 				menuLink.classList.add('currentActiveTab');
 			}
 
-			// create list item element
 			const listItem = document.createElement('li');
 
-			// append menu link to li
 			listItem.appendChild(menuLink);
 
-			// append list items to the nav bar unorderd list
 			navList.appendChild(listItem);
 		})
 	}
@@ -157,6 +149,7 @@ topFunction = () => {
     window.scrollTo(scrollOptions);
 }
 
+// Scroll to section on link click
 scrollFunction = () => {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     topBtn.style.display = "block";
